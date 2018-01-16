@@ -9,6 +9,7 @@ import { ExplorerCommands } from './views/explorerCommands';
 import { GitExplorer } from './views/gitExplorer';
 import { GitService } from './gitService';
 import { Keyboard } from './keyboard';
+import { PageProvider } from './pageProvider';
 import { ResultsExplorer } from './views/resultsExplorer';
 
 export class Container {
@@ -28,6 +29,7 @@ export class Container {
         context.subscriptions.push(Container._codeLensController = new CodeLensController());
         context.subscriptions.push(Container._explorerCommands = new ExplorerCommands());
         context.subscriptions.push(Container._keyboard = new Keyboard());
+        context.subscriptions.push(Container._pageProvider = new PageProvider());
 
         Container._gitExplorer = new GitExplorer();
         Container._resultsExplorer = new ResultsExplorer();
@@ -79,6 +81,11 @@ export class Container {
     private static _currentLineController: CurrentLineController;
     static get lineAnnotations() {
         return Container._currentLineController;
+    }
+
+    private static _pageProvider: PageProvider;
+    static get pages() {
+        return Container._pageProvider;
     }
 
     private static _resultsExplorer: ResultsExplorer;

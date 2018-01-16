@@ -1151,6 +1151,16 @@
             }
         ],
         "commands": [
+           {
+                "command": "gitlens.showSettingsPage",
+                "title": "Open Settings",
+                "category": "GitLens"
+            },
+            {
+                "command": "gitlens.showWelcomePage",
+                "title": "Welcome",
+                "category": "GitLens"
+            },
             {
                 "command": "gitlens.diffDirectory",
                 "title": "Directory Compare Working Tree with...",
@@ -3309,17 +3319,18 @@
         "*"
     ],
     "scripts": {
-        "bundle": "npm run lint && webpack --env.production",
+        "bundle": "npm run lint && webpack --env.production --context ./src/ui --config ./src/ui/webpack.config.js && webpack --env.production",
         "clean": "git clean -xdf",
-        "compile": "npm run lint && tsc -m commonjs -p ./",
+        "compile": "npm run lint && tsc -m commonjs -p ./ && npm run compile-ui",
+        "compile-ui": "webpack --context ./src/ui --config ./src/ui/webpack.config.js",
         "watch": "tsc -watch -p ./",
         "lint": "tslint --project tslint.json",
         "pack": "npm run clean && vsce package",
-        "postinstall": "node ./node_modules/vscode/bin/install",
         "pub": "npm run clean && vsce publish",
         "reset": "npm run clean && npm install",
-        "vscode:prepublish": "npm install --no-save && npm run bundle",
-        "prepush": "npm run compile"
+        "postinstall": "node ./node_modules/vscode/bin/install && pushd \"./src/ui\" && npm install --no-save && popd",
+        "prepush": "npm run compile",
+        "vscode:prepublish": "npm install --no-save && npm run bundle"
     },
     "dependencies": {
         "copy-paste": "1.3.0",
