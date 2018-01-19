@@ -1764,11 +1764,11 @@
                 },
                 {
                     "command": "gitlens.toggleLineBlame",
-                    "when": "gitlens:activeIsBlameable"
+                    "when": "gitlens:enabled"
                 },
                 {
                     "command": "gitlens.toggleCodeLens",
-                    "when": "gitlens:activeIsTracked && gitlens:canToggleCodeLens"
+                    "when": "gitlens:enabled && gitlens:canToggleCodeLens"
                 },
                 {
                     "command": "gitlens.showLastQuickPick",
@@ -3161,7 +3161,7 @@
                 "command": "gitlens.toggleCodeLens",
                 "key": "ctrl+shift+g shift+b",
                 "mac": "cmd+alt+g shift+b",
-                "when": "gitlens:keymap == chorded && editorTextFocus && gitlens:activeIsTracked && gitlens:canToggleCodeLens"
+                "when": "gitlens:keymap == chorded && editorTextFocus && gitlens:enabled && gitlens:canToggleCodeLens"
             },
             {
                 "command": "gitlens.showLastQuickPick",
@@ -3237,7 +3237,7 @@
             {
                 "command": "gitlens.toggleCodeLens",
                 "key": "shift+alt+b",
-                "when": "gitlens:keymap == standard && editorTextFocus && gitlens:activeIsTracked && gitlens:canToggleCodeLens"
+                "when": "gitlens:keymap == standard && editorTextFocus && gitlens:enabled && gitlens:canToggleCodeLens"
             },
             {
                 "command": "gitlens.showLastQuickPick",

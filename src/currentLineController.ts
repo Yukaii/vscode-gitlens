@@ -326,8 +326,6 @@ export class CurrentLineController extends Disposable {
     }
 
     async toggleAnnotations(editor: TextEditor | undefined, type: LineAnnotationType) {
-        if (editor === undefined) return;
-
         const state = this.getBlameAnnotationState();
         this.setBlameAnnotationState(!state.enabled, type, editor);
     }
